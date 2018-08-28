@@ -1,0 +1,22 @@
+<div *ngIf="forms" class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Form Id</th>
+      <th>Form Name</th>
+      <th># Submissions</th>
+      <th>Submit Page</th>
+      <th>Submissions Page</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let form of forms">
+      <td>{{form.id}}</td>
+      <td>{{form.name}}</td>
+      <td>{{form.submissions.length}}</td>
+      <td><a href="/forms/submit/{{form.id}}">View</a></td>
+      <td><a href="/forms/submissions/{{form.id}}">View</a></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,15 @@
+<h3 *ngIf="form">{{form.name}} form submissions page</h3>
+<div *ngIf="form" class="container">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th *ngFor="let field of form.fields">{{field.fieldName}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let submission of submissions">
+      <td *ngFor="let fieldSubmission of submission.fieldSubmissions">{{fieldSubmission.inputValue}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

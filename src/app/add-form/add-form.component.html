@@ -1,0 +1,51 @@
+<h3>Form building page</h3>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10"><h5>Current form preview</h5>
+      <div *ngIf="form" class="container form-container">
+        <form (ngSubmit)="addForm(); newForm.resetForm()" #newForm="ngForm">
+          <div class="form-group" *ngFor="let field of form.fields">
+            <label for="field">{{ field.fieldName }}</label>
+            <input type="{{field.type}}" class="form-control" id="field" name="{{field.fieldName}}">
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-4"></div>
+          <div class="form-group col-sm-4">
+            <label for="formName">Please enter form name</label>
+            <input type="text" class="form-control" id="formName"  name="formName"  [(ngModel)] ="form.name"  #name="ngModel" required>
+          </div>
+            <div class="col-sm-4"></div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="(!newForm.form.valid) || (form.fields.length === 0)">Add form</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-sm-2 fieldAdder"><h5>Field adder</h5>
+      <form (ngSubmit)="onSubmit(); fieldAdderForm.resetForm()" #fieldAdderForm="ngForm">
+        <div class="form-group">
+          <label for="label">Label</label>
+          <input type="text" class="form-control" id="label"  name="fieldName"  [(ngModel)] ="field.fieldName"  #name="ngModel" required>
+        </div>
+        <div class="form-group">
+        <label for="new-field-input-name">Input name</label>
+        <input type="text" class="form-control" name="new-field-input-type" id="new-field-input-type" required>
+      </div>
+        <div class="form-group">
+          <label for="new-field-input-type">Input type</label>
+          <select class="form-control" id="new-field-input-name"  name="new-field-input-name" [(ngModel)] ="field.type" #name="ngModel"  required> <!--TODO ://[(ngModel)]=""  #name="ngModel"-->
+            <option value=text id="new-field-input-type-0">Text</option>
+            <option value=color selected="true" id="new-field-input-type-1">Color</option>
+            <option value="date" id="new-field-input-type-2">Date</option>
+            <option value="email" id="new-field-input-type-3">Email</option>
+            <option value="tel" id="new-field-input-type-4">Tel</option>
+            <option value="number" id="new-field-input-type-5">Number</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="(!fieldAdderForm.form.valid)">Add field</button>
+      </form>
+    </div>
+
+  </div>
+</div>
+
