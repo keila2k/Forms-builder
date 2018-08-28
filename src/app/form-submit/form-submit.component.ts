@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from '@angular/router';
+import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormsService} from '../services/forms.service';
 import {Form} from '../Form';
 import {FieldSubmission, Submission} from '../FieldSubmission';
@@ -13,7 +13,9 @@ export class FormSubmitComponent implements OnInit {
   form: Form;
   submission: Submission = new Submission();
 
-  constructor(private route: ActivatedRoute, private formsService: FormsService) { }
+  constructor(private route: ActivatedRoute,
+              private formsService: FormsService,
+              private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe( params => {
@@ -32,5 +34,7 @@ export class FormSubmitComponent implements OnInit {
 
   onSubmit() {
     this.formsService.addFormSubmission(this.form , this.submission).subscribe();
+    location.reload();
+    this.router.navigate(['']);
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Form} from '../Form';
 import {Field, type} from '../Field';
 import {FormsService} from '../services/forms.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-form',
@@ -12,7 +13,8 @@ export class AddFormComponent implements OnInit {
   form: Form = new Form();
   field: Field = new Field();
 
-  constructor(private formsService: FormsService) {
+  constructor(private formsService: FormsService,
+              private router: Router) {
   }
 
   ngOnInit() {
@@ -24,5 +26,8 @@ export class AddFormComponent implements OnInit {
 
   addForm() {
     this.formsService.addForm(this.form).subscribe();
+    location.reload();
+    this.router.navigate(['']);
+
   }
 }

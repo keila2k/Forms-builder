@@ -1,8 +1,9 @@
 <h3>Form building page</h3>
 <div class="container">
   <div class="row">
-    <div class="col-sm-10"><h5>Current form preview</h5>
+    <div class="col-sm-10 formPreview">
       <div *ngIf="form" class="container form-container">
+        <h5>Current form preview</h5>
         <form (ngSubmit)="addForm(); newForm.resetForm()" #newForm="ngForm">
           <div class="form-group" *ngFor="let field of form.fields">
             <label for="field">{{ field.fieldName }}</label>
@@ -10,12 +11,12 @@
           </div>
           <hr>
           <div class="row">
-            <div class="col-sm-4"></div>
-          <div class="form-group col-sm-4">
+            <div class="col-sm-3"></div>
+          <div class="form-group col-sm-6">
             <label for="formName">Please enter form name</label>
             <input type="text" class="form-control" id="formName"  name="formName"  [(ngModel)] ="form.name"  #name="ngModel" required>
           </div>
-            <div class="col-sm-4"></div>
+            <div class="col-sm-3"></div>
           </div>
           <button type="submit" class="btn btn-primary" [disabled]="(!newForm.form.valid) || (form.fields.length === 0)">Add form</button>
         </form>

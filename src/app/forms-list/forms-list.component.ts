@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormsService} from '../services/forms.service';
 import {Form} from '../Form';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-forms-list',
