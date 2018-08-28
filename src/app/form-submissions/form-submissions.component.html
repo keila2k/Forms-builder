@@ -1,14 +1,18 @@
-<h3 *ngIf="form">{{form.name}} form submissions page</h3>
+<h3 *ngIf="form">{{form.name | uppercase}} form submissions page</h3>
 <div *ngIf="form" class="container">
   <table class="table table-striped">
     <thead>
     <tr>
-      <th *ngFor="let field of form.fields">{{field.fieldName}}</th>
+      <th *ngFor="let field of form.fields">{{field.fieldName| titlecase}}</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let submission of submissions">
-      <td *ngFor="let fieldSubmission of submission.fieldSubmissions">{{fieldSubmission.inputValue}}</td>
+      <td *ngFor="let fieldSubmission of submission.fieldSubmissions">
+        <div [style.background-color]="fieldSubmission.inputValue" class="color-box" *ngIf="fieldSubmission.field.type === 'color'">
+        </div>
+        <div class="other" *ngIf="fieldSubmission.field.type !== 'color'">{{fieldSubmission.inputValue}}</div>
+      </td>
     </tr>
     </tbody>
   </table>

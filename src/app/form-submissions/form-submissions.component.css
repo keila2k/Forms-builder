@@ -10,3 +10,8 @@ h3{
 .table td {
   text-align: center;
 }
+.color-box{
+  height: 30px;
+  width: 100%;
+  border-radius: 5px;
+}

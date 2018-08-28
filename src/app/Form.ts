@@ -7,9 +7,9 @@ export class Form {
   submissions: Submission[];
   fields: Field[];
 
-  constructor(){
-    this.submissions = new Array(<Submission>);
-    this.fields = new Array(<Field>);
+  constructor() {
+    this.submissions = [];
+    this.fields = [];
   }
 
 }
