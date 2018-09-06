@@ -19,8 +19,10 @@ export class FormsService {
     return this.http.get<Form>(`http://localhost:3000/api/forms/${formId}`);
   }
 
-  addFormSubmission(form: Form, submission: Submission): Observable<Submission> {
-    return this.http.post<Submission>(`http://localhost:3000/api/forms/${form.id}/submissions`, submission);
+  addFormSubmission(recaptchaResponse: string , form: Form, submission: Submission) {
+    this.http.post(`http://localhost:3000/api/recaptcha`, recaptchaResponse).subscribe();
+    // inside promise =>  (if error => return error , else execute the line underneath)
+    // return this.http.post<Submission>(`http://localhost:3000/api/forms/${form.id}/submissions`, submission);
   }
 
   addForm(form: Form) {

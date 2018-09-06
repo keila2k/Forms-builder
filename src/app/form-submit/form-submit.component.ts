@@ -3,6 +3,7 @@ import {ActivatedRoute, Params, Router} from '@angular/router';
 import {FormsService} from '../services/forms.service';
 import {Form} from '../Form';
 import {FieldSubmission, Submission} from '../FieldSubmission';
+declare const grecaptcha: any;
 
 @Component({
   selector: 'app-form-submit',
@@ -33,8 +34,9 @@ export class FormSubmitComponent implements OnInit {
   }
 
   onSubmit() {
-    this.formsService.addFormSubmission(this.form , this.submission).subscribe();
-    location.reload();
-    this.router.navigate(['']);
+    const response = grecaptcha.getResponse();
+    this.formsService.addFormSubmission(response, this.form , this.submission).subscribe();
+    // location.reload();
+    // this.router.navigate(['']);
   }
 }
