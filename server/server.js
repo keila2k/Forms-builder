@@ -79,5 +79,9 @@ app.post('/api/forms/:id/submissions', function (req, res) {
 
 app.listen(3000, function () {
   forms = JSON.parse(fs.readFileSync('formsDB.json','utf8'));
+<<<<<<< HEAD
   console.log("Form builder running on port 3000!");
+=======
+  console.log("Form builder API running on port 3000!");
+>>>>>>> abe564c9e250bad310bdb3d379fad213b197cdfb
 });
